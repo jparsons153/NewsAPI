@@ -24,4 +24,9 @@ public class Article {
 
     private List<Media> media;
     private String imageUrl;
+
+//    // overriding setter so imageUrl = Media.mediaMetadata[1]
+//    public void setImageUrl() {
+//        this.imageUrl = String.valueOf(media.get(0).getMediaMetadata().get(0));
+//    }
 }

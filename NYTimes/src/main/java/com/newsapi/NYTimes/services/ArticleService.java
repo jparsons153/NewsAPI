@@ -25,11 +25,18 @@ public class ArticleService {
 
     public List<Article> getMostPopular() {
         NytResponse response = restTemplate.getForObject(mostPopularUrl + "api-key=" + apikey, NytResponse.class);
-        List<Article> results = new ArrayList<>();
+        //List<Article> results = new ArrayList<>();
         if (response != null && response.getStatus().equals("OK")) {
-            return response.getResults();
+            List<Article>articles = response.getResults();
+            for(Article article: articles) {
+                if (article.getMedia() != null && article.getMedia().size() > 0) {
+                    article.setImageUrl(article.getMedia().get(0).getMediaMetadata().get(2).getUrl());
+                }
+            }
+            System.out.println(response.getResults().get(1).getImageUrl());
+            return articles;
         } else {
-            return results;
+            return new ArrayList<>();
         }
     }
 }

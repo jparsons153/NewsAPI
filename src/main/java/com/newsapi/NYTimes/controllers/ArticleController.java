@@ -19,4 +19,11 @@ public class ArticleController {
         model.addAttribute("articleList", articleService.getMostPopular());
         return "index";
     }
+
+    @GetMapping("/search")
+    public String searchDisplay(Model searchModel){
+        searchModel.addAttribute("articleList",articleService.getMostPopular());
+        return "search";
+    }
+
 }

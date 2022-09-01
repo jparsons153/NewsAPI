@@ -16,5 +16,5 @@ public class NytResponse {
     private String copyright;
     @JsonProperty("num_results")
     private int numResults;
-    private List<Article> results;
+    private List<com.newsapi.NYTimes.models.Article> results;
 }

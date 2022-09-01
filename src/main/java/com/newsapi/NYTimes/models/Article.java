@@ -22,11 +22,7 @@ public class Article {
     @JsonProperty("abstract")
     private String summary;
 
-    private List<Media> media;
+    private List<com.newsapi.NYTimes.models.Media> media;
     private String imageUrl;
 
-//    // overriding setter so imageUrl = Media.mediaMetadata[1]
-//    public void setImageUrl() {
-//        this.imageUrl = String.valueOf(media.get(0).getMediaMetadata().get(0));
-//    }
 }

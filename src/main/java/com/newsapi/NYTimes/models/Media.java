@@ -19,5 +19,5 @@ public class Media {
     private String caption;
     private String url;
     @JsonProperty("media-metadata")
-    private List<Thumbnail> mediaMetadata;
+    private List<com.newsapi.NYTimes.models.Thumbnail> mediaMetadata;
 }

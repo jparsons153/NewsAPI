@@ -1,9 +1,6 @@
 package com.newsapi.NYTimes.services;
 
-import com.newsapi.NYTimes.models.Article;
-import com.newsapi.NYTimes.models.Doc;
-import com.newsapi.NYTimes.models.NytResponse;
-import com.newsapi.NYTimes.models.NytSearchResponse;
+import com.newsapi.NYTimes.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -45,15 +42,21 @@ public class ArticleService {
         }
     }
 
+    // how to debug search-html
     public List<Doc> getSearchResults(String searchText) {
-        ResponseEntity<NytSearchResponse> searchResponse = restTemplate.getForEntity(searchUrl + searchText + "api-key" + apikey, NytSearchResponse.class);
+        ResponseEntity<NytSearchResponse> searchResponse = restTemplate.getForEntity(searchUrl +"q=" + searchText + "&" + "api-key=" + apikey, NytSearchResponse.class);
+
+        //
 
         if (searchResponse != null && searchResponse.getStatusCode().is2xxSuccessful()) {
-            List<Doc> docs = (List<Doc>) searchResponse.getBody();
+            List<Doc> docs = searchResponse.getBody().getResponse().getDocs();
             for (Doc doc : docs) {
-                if (doc.getMultimedia().get(0).getSubtype().equals("largeHorizontal375")) {
-                    doc.setImageUrl("https://www.nytimes.com/" + doc.getMultimedia().get(0).getUrl());
+                for (Multimedia media:doc.getMultimedia()) {
+                    if (media.getSubtype().equals("largeHorizontal375")) {
+                        doc.setImageUrl("https://www.nytimes.com/" + doc.getMultimedia().get(0).getUrl());
+                    }
                 }
+
             }
             return docs;
         }

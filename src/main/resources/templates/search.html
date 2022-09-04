@@ -10,11 +10,11 @@
     <div class="bg-light p-4 rounded m-2">
         <h1 class="display-4">Search New York Times</h1>
         <div>
-            <form action="#" th:action="@{/search}" method="post">
+            <form action="#" th:action="@{/articles/search}" method="post">
                 <table border="0" cellpadding="10">
                     <tr>
                         <td>KEYWORDS:</td>
-                        <td><input type="text" name="q" id="q" th:value="*{searchString}" required/></td>
+                        <td><input type="text" name="searchString" th:value="${searchString}" required/></td>
                         <td colspan="2"><button type="submit">Search</button> </td>
                     </tr>
                 </table>

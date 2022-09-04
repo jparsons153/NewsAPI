@@ -27,7 +27,7 @@ public class ArticleController {
     }
 
     // take request param from search bar, create query and return List<doc> back to the view
-    @PostMapping("/search/")
+    @PostMapping("/search")
     public String returnSearchResults(@RequestParam("searchString")String searchString, Model searchModel){
         searchModel.addAttribute("docs",articleService.getSearchResults(searchString));
         return "search-results";

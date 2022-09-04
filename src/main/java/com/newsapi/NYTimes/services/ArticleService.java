@@ -46,7 +46,7 @@ public class ArticleService {
     }
 
     public List<Doc> getSearchResults(String searchText) {
-        ResponseEntity<NytSearchResponse> searchResponse = restTemplate.getForEntity(searchUrl + "api-key" + apikey, NytSearchResponse.class);
+        ResponseEntity<NytSearchResponse> searchResponse = restTemplate.getForEntity(searchUrl + searchText + "api-key" + apikey, NytSearchResponse.class);
 
         if (searchResponse != null && searchResponse.getStatusCode().is2xxSuccessful()) {
             List<Doc> docs = (List<Doc>) searchResponse.getBody();

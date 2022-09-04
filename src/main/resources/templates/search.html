@@ -9,12 +9,23 @@
 <div class="container">
     <div class="bg-light p-4 rounded m-2">
         <h1 class="display-4">Search New York Times</h1>
+        <div>
+            <form action="#" th:action="@{/search}" method="post">
+                <table border="0" cellpadding="10">
+                    <tr>
+                        <td>KEYWORDS:</td>
+                        <td><input type="text" name="q" id="q" th:value="*{searchString}" required/></td>
+                        <td colspan="2"><button type="submit">Search</button> </td>
+                    </tr>
+                </table>
+            </form>
+    </div>
         <th:block th:unless="${articleList.isEmpty()}">
             <div class="card mb-3">
                 <div class="row no-gutters" th:each="article: ${articleList}">
                     <div class="col-md-4">
                         <img th:unless="${article.imageUrl == null}" th:src="${article.imageUrl}" class="card-img-top">
-                        <p</p>
+                        <br/><br/>
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">

@@ -30,6 +30,8 @@
           <div class="col-md-8">
             <div class="card-body">
               <h5 class="card-title"th:text="${doc.headline.main}">title</h5>
+              <p class="card-text" th:text="${doc.snippet}">summary</p>
+              <a th:href="${doc.web_url}" class="btn btn-primary">Read More..</a>
             </div>
           </div>
         </div>

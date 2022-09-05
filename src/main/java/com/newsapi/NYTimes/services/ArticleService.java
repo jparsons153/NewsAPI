@@ -42,11 +42,8 @@ public class ArticleService {
         }
     }
 
-    // how to debug search-html
     public List<Doc> getSearchResults(String searchText) {
         ResponseEntity<NytSearchResponse> searchResponse = restTemplate.getForEntity(searchUrl +"q=" + searchText + "&" + "api-key=" + apikey, NytSearchResponse.class);
-
-        //
 
         if (searchResponse != null && searchResponse.getStatusCode().is2xxSuccessful()) {
             List<Doc> docs = searchResponse.getBody().getResponse().getDocs();

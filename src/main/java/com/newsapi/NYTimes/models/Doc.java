@@ -15,4 +15,7 @@ public class Doc {
     private Byline byline;
     private Headline headline;
     private String imageUrl;
+    private String web_url;
+    private String pub_date;
+    private String snippet;
 }
